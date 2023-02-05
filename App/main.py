@@ -20,6 +20,7 @@ DEFAULT_LABEL_COLORS = {
 
 # Initialize the application
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server
 
 # Get the ner model
 filename = "ner_resumes.sav"

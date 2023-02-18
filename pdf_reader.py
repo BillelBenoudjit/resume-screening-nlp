@@ -62,6 +62,10 @@ def save_file(name, content):
     with open(os.path.join(directory, name), "wb") as fp:
         fp.write(base64.decodebytes(data))
 
+def remove_file(name):
+    if len(os.listdir(directory)) > 0:
+        os.remove(os.path.join(directory, name))
+
 
 def parse_contents(contents, filename, date):
     content_type, content_string = contents.split(',')
@@ -71,6 +75,7 @@ def parse_contents(contents, filename, date):
         if 'pdf' in filename:
             pdf = pdfReader(directory + '/' + filename)
             text = pdf.PDF_one_pager()
+            remove_file(filename)
     except Exception as e:
         print(e)
     return text

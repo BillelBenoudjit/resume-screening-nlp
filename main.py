@@ -29,55 +29,56 @@ nlp = pickle.load(open(filename, 'rb'))
 # Soumya Balan Soumya Balan - BE Computer Science - 3 yr Work Experience at Microsoft Corporation  Thiruvananthapuram, Kerala - Email me on Indeed: indeed.com/r/Soumya- Balan/8c7fbb9917935f20  ➢ To work in a progressive organization where I can enhance my skills and learning to contribute to the success of the organization.  Willing to relocate: Anywhere  WORK EXPERIENCE  Technical Support Engineer  Microsoft iGTSC -  Bengaluru, Karnataka -  July 2013 to October 2015  Position: TECHNICAL SUPPORT ENGINEER  Company: Microsoft Corporation - Microsoft India Global Technical Support Center (Microsoft IGTSC), Bangalore  Years of Experience: 2 Years and 4 Months  Responsibilities  ➢ Represent Microsoft and communicate with corporate customers via telephone, written correspondence, or electronic service regarding technically complex escalated problems identified in Microsoft software products, and manage relationships with those customers.  ➢ Manage not only the technically complex problems, but also politically charged situations requiring the highest level of customer skill.  ➢ Receive technically complex, critical or politically hot customer issues, and maintain ownership of issue until resolved completely.  ➢ Solve highly complex problems, involving broad, in-depth product knowledge or in-depth product specialty.  ➢ Use trace analysis, and other sophisticated tools to analyze problems and develop solutions to meet customer needs.  ➢ Lead triage meetings to share knowledge with other engineers and develop customer solutions efficiently.  ➢ Act as technical lead, mentor, and model for a team of engineers, provide direction to others, review solutions and articles, mentoring existing & aspiring Engineers.  https://www.indeed.com/r/Soumya-Balan/8c7fbb9917935f20?isid=rex-download&ikw=download-top&co=IN https://www.indeed.com/r/Soumya-Balan/8c7fbb9917935f20?isid=rex-download&ikw=download-top&co=IN   ➢ Write technical articles for knowledge base.  ➢ Consult, collaborate and take escalations when necessary.  ➢ Maintain working knowledge of pre-release products and take ownership for improvement in key technical areas.  ➢ Manage customer escalations and recognize when to solicit additional help. Participate in technical discussions and engage with product team if required to resolve issues and represent customer segments.  Exchange Server Knowledge  ➢ Exchange Server 2007 ➢ Exchange Server 2010 ➢ Exchange Server 2013 ➢ O365  EDUCATION  BE in Computer Science and Engineering  Vivekananda Engineering College for Women -  Chennai, Tamil Nadu  2013  BTEC HNC in Aviation  Frankfinn Institute of Airhostess Training -  Calicut, Kerala  2008  State Board +2  2007  SSLC  State  2005  SKILLS  DBMS, O365, Communication Skills, Exchange 2013, Hospitality, Networking, Computer Operating, Programming, Computer Hardware, Java, Exchange 2010, Teaching  ADDITIONAL INFORMATION  Skill Set ➢ Excellent communication and interpersonal skills.    ➢ Proficient in Computer Applications -Microsoft Office Windows (Windows 2007, XP, 8, 8.1 and Windows 10), Linux, Fedora. ➢ Strong analytical and problem solving skills. ➢ Ability in managing a team of professionals and enjoy being in a team.  Project Details  UG PROJECT TITLE: Memory Bounded Anytime Heuristic Search A* Algorithm  ➢ This Project presents a heuristic-search algorithm called Memory-bounded Anytime Window A* (MAWA*), which is complete, anytime, and memory bounded. MAWA* uses the window-bounded anytime-search methodology of AWA* as the basic framework and combines it with the memory- bounded A* -like approach to handle restricted memory situations. Simple and efficient versions of MAWA* targeted for tree search have also been presented. Experimental results of the sliding-tile puzzle problem and the traveling-salesman problem show the significant advantages of the proposed algorithm over existing methods.  Technical and Co-Curricular activities  ➢ Star Performer in Microsoft IGTSC in 2014. ➢ Paper Presentations on Applications of Robotics in INOX 2K12. ➢ Attended a Three-Day workshop on C and C++ Programming and Aliasing. ➢ Attended a One-Day workshop on Java and Hardware Workshop at VECW ➢ Paper presentation 4G Technologies, Cloud Computing, Heuristic Algorithms and Applications, Open Source Software. ➢ Multimedia presentations on Artificial Intellegence, 6th Sense, and Robotics. ➢ Completed training of OCA (9i, 10g) from Oracle University. ➢ Attended SPARK training program in Infosys Mysore. ➢ Attended System Hardware Training program at HCL, Pondicherry.
 
 # Define the application components
-appTitle = dcc.Markdown(children='# 📑 NER Resume Screening App')
+appTitle = dcc.Markdown(children='# 📑 Resume Screening App', style={'margin-top': '20px'})
 inputPart = dcc.Markdown(children="##### Please insert your resume in the text input or upload it for screening.")
 resumeUploader = dcc.Upload(
-        id='upload-data',
-        children=html.Div([
-            'Drag and Drop or ',
-            html.A('Select File (.pdf)')
-        ]),
-        style={
-            'width': '100%',
-            'height': '60px',
-            'lineHeight': '60px',
-            'borderWidth': '1px',
-            'borderStyle': 'dashed',
-            'borderRadius': '5px',
-            'textAlign': 'center',
-            'margin': '10px'
-        },
-        # Allow multiple files to be uploaded
-        multiple=True
-    )
+    id='upload-data',
+    children=html.Div([
+        'Drag and Drop or ',
+        html.A('Select File (.pdf)')
+    ]),
+    style={
+        'width': '100%',
+        'height': '60px',
+        'lineHeight': '60px',
+        'borderWidth': '1px',
+        'borderStyle': 'dashed',
+        'borderRadius': '5px',
+        'textAlign': 'center',
+        'margin': '10px'
+    },
+    # Allow multiple files to be uploaded
+    multiple=True
+)
 resumeInput = dbc.Textarea(
     id='resume-input',
     value='',
     style={'width': '100%'},
     rows="6"
 )
-outputPart = dcc.Markdown(children="##### Here comes the screening of the resume.")
+outputPart = dcc.Markdown(children="##### 🔎 Here comes the screening of the resume.")
 resumeRecognition = html.Div(children="")
-matchPart = dcc.Markdown(children="##### Skills matching.")
+separationRow = html.Hr()
+matchPart = dcc.Markdown(children="##### 🚀 Skills matching.")
 skillsInputLabel = dbc.Label("Add the wanted skills below.")
-skillsInput = dbc.Input(id='skills-input', placeholder="Skills goes here...", type="text", value="")
+skillsInput = dbc.Input(id='skills-input', placeholder="Skills go here...", type="text", value="")
 skillsInputFormText = dbc.FormText("The skills should be separated by a commas ','.")
 skillsButton = dbc.Button("Match Skills", id='skills-button', color="primary", className="me-1", n_clicks=0)
-skillsMatching = dcc.Markdown(children="", style={'margin-top': '5px'})
+skillsMatching = dcc.Markdown(children="", style={'margin-top': '10px', 'margin-bottom': '50px'})
 
 # Define de app
 app.layout = dbc.Container([
     dbc.Row([
         dbc.Col([appTitle], width=6)
     ], justify='center'),
-    html.Hr(),
+    html.Hr(style={'margin-right': 'auto', 'margin-left': 'auto', 'width': '80%'}),
     dbc.Row([
         dbc.Col([
             dbc.Row([
-               dbc.Col([inputPart], width=12)
+                dbc.Col([inputPart], width=12)
             ], justify='center', style={'text-align': 'justify'}),
             dbc.Row([
-               dbc.Col([resumeUploader], width=12)
+                dbc.Col([resumeUploader], width=12)
             ], justify='right')
         ], width=3),
         dbc.Col([resumeInput], width=7)
@@ -88,6 +89,7 @@ app.layout = dbc.Container([
     dbc.Row([
         dbc.Col([resumeRecognition], width=10)
     ], justify='center'),
+    separationRow,
     dbc.Row([
         dbc.Col([matchPart], width=10)
     ], justify='center'),
@@ -172,6 +174,7 @@ def entity(children, name):
 # Display callback
 @app.callback(
     Output(outputPart, component_property='style'),
+    Output(separationRow, component_property='style'),
     Output(matchPart, component_property='style'),
     Output(skillsInputLabel, component_property='style'),
     Output(skillsInput, component_property='style'),
@@ -182,11 +185,12 @@ def entity(children, name):
 )
 def show_text(text):
     if text is None:
-        return {'display': 'none'}, {'display': 'none'}, {'display': 'none'}, \
+        return {'display': 'none'}, {'display': 'none'}, {'display': 'none'}, {'display': 'none'}, \
             {'display': 'none'}, {'display': 'none'}, \
             {'display': 'none'}, {'display': 'none'}
     else:
         return {'display': 'block', 'margin-top': '5px'}, \
+            {'display': 'block', 'margin-top': '20px', 'margin-right': 'auto', 'margin-left': 'auto', 'width': '80%'}, \
             {'display': 'block'}, \
             {'display': 'block'}, \
             {'display': 'block'}, \
@@ -197,7 +201,7 @@ def show_text(text):
              'overflow-y': 'scroll',
              'overflow-x': 'hidden',
              'scrollbar-width': 'thin',
-             'height': '150px',
+             'height': '250px',
              'width': '100%',
              'margin-right': 'auto',
              'margin-left': 'auto',
@@ -222,12 +226,15 @@ def get_matching_score(n_clicks, text, skills):
         resume_skills = unique_skills(get_skills(text))
         resume_skills = [skill.lower() for skill in resume_skills]
         score = 0
-        for x in req_skills:
-            if x in resume_skills[0]:
-                score += 1
-        req_skills_len = len(req_skills)
-        match = round(score / req_skills_len * 100, 1)
-        return f"##### The current Resume is {match}% matched to your requirements."
+        if len(resume_skills) > 0:
+            for x in req_skills:
+                if x in resume_skills[0]:
+                    score += 1
+            req_skills_len = len(req_skills)
+            match = round(score / req_skills_len * 100, 0)
+            return f"##### The current Resume is {match}% matched to your requirements."
+        else:
+            return f"##### No skills detected within the uploaded resume."
 
 
 def get_skills(text):
